@@ -3,19 +3,15 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import Project from './Project.jsx';
 
-class App extends Component {
+export default class App extends Component {
     render() {
         return (
                 <div className="container">
                 <header>
                 <h1>Projects</h1>
+                <Project />
                 </header>
                 </div>
                );
     }
 }
-
-export default createContainer(() => {
-    return {
-    };   
-}, App);
