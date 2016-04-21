@@ -1,1 +1,25 @@
 /* CSS declarations go here */
+body {
+    font-family: Helvetica;
+    font-variant: small-caps;
+    text-transform: capitalize;
+    color: #6b566b;
+    background-color: rgba(244, 245, 242, 0.46);;
+}
+
+div.projectReport {
+    border-style: none;
+    border-color: : #f5f2f2;
+}
+
+.additionBar {
+    fill: #D9E9D6;
+    stroke-width: 2;
+    stroke: #AEE4A7;
+}
+
+.subtractionBar {
+    fill: #F8B0B0;
+    stroke-width: 2;
+    stroke: #FF7272;
+}

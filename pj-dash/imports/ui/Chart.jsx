@@ -28,7 +28,7 @@ class DataSeries extends Component {
         
         var xScale = d3.scale.ordinal()
             .domain(d3.range(this.props.data.length))
-            .rangeRoundBands([0, this.props.width], 0.5);
+            .rangeRoundBands([0, this.props.width], 0);
 
         var height = this.props.height;
 
@@ -54,7 +54,7 @@ DataSeries.props = {
 class Bar extends Component {
     render() {
         return (
-                <rect fill="rgb(0,0,255)" height={this.props.height} width={this.props.width} x={this.props.offset} y={this.props.availableHeight - this.props.height} />
+                <rect className="additionBar" height={this.props.height} width={this.props.width} x={this.props.offset} y={this.props.availableHeight - this.props.height} />
                );
     }
 }

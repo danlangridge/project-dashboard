@@ -8,6 +8,7 @@ export default class Project extends Component {
                 <div className="project">
                 <h2>Master Project</h2>
                 <ProjectReport />
+                <ProjectReport />
                 </div>
                );
     }
