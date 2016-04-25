@@ -12,7 +12,6 @@ export default class Project extends Component {
                 <div className="project">
                 <h2>Master Project</h2>
                 <ProjectReport />
-                <ProjectReport />
                 </div>
                );
     }
@@ -32,7 +31,8 @@ class ProjectReport extends Component {
     }
     componentWillMount() {
         Meteor.call('projectGet', "danlangridge", "project-dashboard", (error, results) => {
-            this.setState({result: results}); 
+            this.setState({result: results});
+            console.log(result);
         })
 
     }
