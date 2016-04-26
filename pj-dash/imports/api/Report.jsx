@@ -9,6 +9,7 @@ Meteor.methods({
     projectGet(user, repoName) {
         var result;
 
+        var personalAccessToken = '';
 
         var participation = '/stats/participation';
 
@@ -26,10 +27,10 @@ Meteor.methods({
                 );
         } catch(err) {
             console.log(err);
-            return "hello";
+            return JSON.parse("{\"owner\":[0]}");
         }
 
-        return result.content; 
+        return JSON.parse(result.content); 
     }
 
 
