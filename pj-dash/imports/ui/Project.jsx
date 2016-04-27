@@ -72,7 +72,7 @@ class ProjectReport extends Component {
             this.setState({result: results});
             var data = this.state.result["owner"];
             console.log(data);
-        })
+        });
 
     }
     render() {

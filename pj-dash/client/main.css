@@ -23,3 +23,12 @@ div.projectReport {
     stroke-width: 2;
     stroke: #FF7272;
 }
+
+div.Avatar {
+
+}
+
+div.Avatar img {
+    height: 100;
+    width: 100;
+}

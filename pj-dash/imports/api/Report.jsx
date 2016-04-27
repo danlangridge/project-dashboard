@@ -9,7 +9,7 @@ Meteor.methods({
     projectGet(user, repoName) {
         var result;
 
-        var personalAccessToken = '';
+        var personalAccessToken = 'token ';
 
         var participation = '/stats/participation';
 
@@ -21,7 +21,7 @@ Meteor.methods({
                 {
                     headers: {
                         'User-Agent': 'Meteor/1.0',
-                        auth : personalAccessToken
+                        Authorization : personalAccessToken
                     }
                 } 
                 );
@@ -30,6 +30,7 @@ Meteor.methods({
             return JSON.parse("{\"owner\":[0]}");
         }
 
+        console.log(result.headers);
         return JSON.parse(result.content); 
     }
 
