@@ -7,13 +7,14 @@ export default class Chart extends Component {
         return (
                 <div className="chart">
                 <svg height={this.props.height} width={this.props.width} >
+
                     <DataSeries data={this.props.data} height={this.props.height} width={this.props.width}  />
                 </svg> 
                 </div>
                ); 
     }
 }
-Chart.propTypes = {
+Chart.PropTypes = {
     height: 0,
     width: 0,
     data: []
@@ -31,6 +32,8 @@ class DataSeries extends Component {
             .rangeRoundBands([0, this.props.width], 0);
 
         var height = this.props.height;
+
+        var axis = d3.svg.axis();
 
         var bars = _.map(this.props.data, function(point, i) {
             return (

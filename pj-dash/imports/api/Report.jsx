@@ -6,15 +6,14 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-    projectGet(user, repoName) {
+
+    getGithubData(user, repoName, request) {
         var result;
 
         var personalAccessToken = 'token ';
 
-        var participation = '/stats/participation';
-
         var URL = "https://api.github.com/repos";
-        URL = URL.concat("/", user, "/", repoName, participation);
+        URL = URL.concat("/", user, "/", repoName, request);
 
         try {
             result = HTTP.call("GET", URL,
@@ -27,12 +26,10 @@ Meteor.methods({
                 );
         } catch(err) {
             console.log(err);
-            return JSON.parse("{\"owner\":[0]}");
+            return undefined;
         }
 
         console.log(result.headers);
-        return JSON.parse(result.content); 
+        return result.content; 
     }
-
-
 });

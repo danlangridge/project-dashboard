@@ -5,6 +5,7 @@ import  Chart from './Chart.jsx';
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 
+import Avatar from './Avatar.jsx';
 
 export default class Project extends Component {
     constructor(props) {
@@ -30,6 +31,7 @@ export default class Project extends Component {
         return (
                 <div className="project">
                 <h1> {this.state.user}\{this.state.project}</h1>
+                <Avatar />
                 <input
                     type="text"
                     name="userInput"
@@ -43,6 +45,7 @@ export default class Project extends Component {
                     onChange={this.handleProjectChange}
                     />
                 <ProjectReport user={this.state.user} project={this.state.project} />
+                <Issues user={this.state.user} project={this.state.project} />
                 </div>
                );
     }
@@ -68,8 +71,14 @@ class ProjectReport extends Component {
         this.requestProjectData();
     }
     requestProjectData() {
-            Meteor.call('projectGet', this.props.user, this.props.project, (error, results) => {
-            this.setState({result: results});
+            Meteor.call('getGithubData', this.props.user, this.props.project, '/stats/participation',  (error, results) => {
+            if (typeof results == "undefined") {
+                empty = JSON.parse("{\"owner\":[0]}");
+                this.setState({result: empty});
+
+            } else {
+                this.setState({result: JSON.parse(results)});
+            }
             var data = this.state.result["owner"];
             console.log(data);
         });
@@ -79,13 +88,54 @@ class ProjectReport extends Component {
         return ( 
                 <div className="projectReport">
                 <h3>Weekly Commit History</h3>
-                <Chart height="300" width="800" data={this.state.result["owner"]} />
+                <Chart height="300" width="400" data={this.state.result["owner"]} />
                 <p>{JSON.stringify(this.state.result["owner"])}</p>
                 </div>
                );
     }
 }
 ProjectReport.PropTypes = {
+    user: "",
+    project: ""
+}
+
+class Issues extends Component {
+    constructor() {
+        super();
+        this.state = {
+            result: []
+        };
+    }
+    componentWillMount() {
+        this.requestProjectIssues();
+    }
+    componentWillReceiveProps() {
+        this.requestProjectIssues();
+    }
+    requestProjectIssues() {
+        Meteor.call('getGithubData', this.props.user, this.props.project, '/issues', (error, results) => {
+            if (typeof results !== "undefined") {
+                this.setState({result: JSON.parse(results)});
+            }
+        });
+    }
+    render() {
+        console.log(this.state.result);
+        var issueList = _.map(this.state.result, function(issue, i) {
+            return (
+                <p key={i}>{issue["title"]}</p>
+                );
+        });
+        return (
+            <div className="issues">
+            <h3>Issues</h3>
+            {issueList}
+            </div>
+            );
+    }
+
+}
+Issues.PropTypes = {
     user: "",
     project: ""
 }
@@ -97,3 +147,4 @@ class CommitHistory extends Component {
                 );
     }
 }
+
