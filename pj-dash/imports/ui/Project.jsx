@@ -12,7 +12,7 @@ export default class Project extends Component {
         super(props);
         this.state = {
             user: "danlangridge",
-            project: "project-dashboard"
+            project: "project-dashboard",
         };
 
         this.handleUserChange = this.handleUserChange.bind(this);
@@ -51,7 +51,7 @@ export default class Project extends Component {
     }
 }
 Project.PropTypes = {
-    user: "",
+    user: "danlangridge",
     project: "project-dashboard",
 }
 
@@ -89,7 +89,6 @@ class ProjectReport extends Component {
                 <div className="projectReport">
                 <h3>Weekly Commit History</h3>
                 <Chart height="300" width="400" data={this.state.result["owner"]} />
-                <p>{JSON.stringify(this.state.result["owner"])}</p>
                 </div>
                );
     }
@@ -123,7 +122,10 @@ class Issues extends Component {
         console.log(this.state.result);
         var issueList = _.map(this.state.result, function(issue, i) {
             return (
-                <p key={i}>{issue["title"]}</p>
+                <div className="Issue" key={i}>
+                <h4>{issue["title"]}</h4>
+                <p>{issue["body"]}</p>
+                </div>
                 );
         });
         return (

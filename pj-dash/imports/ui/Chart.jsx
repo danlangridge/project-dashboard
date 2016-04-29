@@ -22,13 +22,20 @@ Chart.PropTypes = {
 
 class DataSeries extends Component {
     render() {
+        var trimmedData = [];
+        var clearedHead = false;
+        for (i = 0; i < this.props.data.length; i++) {
+            if (!clearedHead && this.props.data[i] == 0) continue;
+            clearedHead = true;
+            trimmedData.push(this.props.data[i]);
+        }
         
         var yScale = d3.scale.linear()
-            .domain([0, d3.max(this.props.data)])
+            .domain([0, d3.max(trimmedData)])
             .range([0, this.props.height]);
         
         var xScale = d3.scale.ordinal()
-            .domain(d3.range(this.props.data.length))
+            .domain(d3.range(trimmedData.length))
             .rangeRoundBands([0, this.props.width], 0);
 
         var height = this.props.height;
