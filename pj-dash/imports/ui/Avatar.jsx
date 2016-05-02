@@ -11,8 +11,8 @@ export default class Avatar extends Component {
 			<div className="Avatar">
 			<img
 				src="https://avatars1.githubusercontent.com/u/1416807"
-				height="100px"
-				width="100px" 
+				height="50px"
+				width="50px" 
 				/>
 			</div>
 		);

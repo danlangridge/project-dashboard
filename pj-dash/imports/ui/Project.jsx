@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-
-import  Chart from './Chart.jsx';
+import { Panel, Grid, Row, Col } from 'react-bootstrap';
 
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 
+import  Chart from './Chart.jsx';
 import Avatar from './Avatar.jsx';
 
 export default class Project extends Component {
@@ -30,22 +30,39 @@ export default class Project extends Component {
     render() {
         return (
                 <div className="project">
-                <h1> {this.state.user}\{this.state.project}</h1>
+                <Panel header={this.state.user+ "\\" +this.state.project}>
+                <Grid>
+                <Row className="showGrid">
+                <Col xs={2}>
                 <Avatar />
+                </Col>
+                <Col xs={3}>
                 <input
                     type="text"
                     name="userInput"
                     defaultValue={this.state.user} 
                     onChange={this.handleUserChange}
                     />
+                </Col>
+                <Col xs={3}>
                 <input
                     type="text"
                     name="projectInput"
                     defaultValue={this.state.project}
                     onChange={this.handleProjectChange}
                     />
+                </Col>
+                </Row>
+                <Row>
+                <Col xs={6}>
                 <ProjectReport user={this.state.user} project={this.state.project} />
+                </Col>
+                <Col xs={6}>
                 <Issues user={this.state.user} project={this.state.project} />
+                </Col>
+                </Row>
+                </Grid>
+                </Panel>
                 </div>
                );
     }
@@ -53,6 +70,7 @@ export default class Project extends Component {
 Project.PropTypes = {
     user: "danlangridge",
     project: "project-dashboard",
+    update: true
 }
 
 class ProjectReport extends Component {
