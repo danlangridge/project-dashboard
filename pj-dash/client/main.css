@@ -2,7 +2,7 @@
 body {
     font-family: Helvetica;
     color: #6b566b;
-    background-color: rgba(244, 245, 242, 0.46);;
+    background-color: rgb(34, 34, 34);;
 }
 
 h1 {
@@ -16,6 +16,7 @@ div.projectReport {
 
 .additionBar {
     fill: #D9E9D6;
+    fill-opacity: 0.2;
     stroke-width: 2;
     stroke: #AEE4A7;
 }
@@ -33,4 +34,14 @@ div.Avatar {
 div.Avatar img {
     height: 100;
     width: 100;
+}
+
+.panel-heading {
+    background-color: rgb(34, 34, 34);
+
+}
+
+.panel {
+    background-color: rgb(34, 34, 34);
+
 }
