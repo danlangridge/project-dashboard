@@ -12,9 +12,46 @@ export default class Project extends Component {
             user: "danlangridge",
             project: "project-dashboard",
         };
+        this.getProjectSelection = this.getProjectSelection.bind(this);
+    }
+    getProjectSelection(event) {
+        var projectInfo = event.target.value.split('\\', 2);
+        alert("hello" + projectInfo[0] + projectInfo[1]);
+        this.setState({user: projectInfo[0], project: projectInfo[1]});
+    }
+    render() {
+        return (
+                <div className="project">
+                <h1>{this.state.user + "\\" + this.state.project}</h1>
+                <ProjectSelection user={this.state.user} project={this.state.project} updateSelection={this.getProjectSelection}/>
+                <ul className="projectInformation">
+                <li>
+                <ProjectReport user={this.state.user} project={this.state.project} />
+                </li>
+                <li>
+                <Issues user={this.state.user} project={this.state.project} />
+                </li>
+                </ul>
+                </div>
+               );
+    }
+}
+Project.PropTypes = {
+    user: "danlangridge",
+    project: "project-dashboard",
+}
 
-        this.handleUserChange = this.handleUserChange.bind(this);
-        this.handleProjectChange = this.handleProjectChange.bind(this);
+class ProjectSelection extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: "danlangridge",
+            project: "project-dashboard",
+        };
+
+    this.handleUserChange = this.handleUserChange.bind(this);
+    this.handleProjectChange = this.handleProjectChange.bind(this);
+    this.updateSelection = props.updateSelection;
     }
     handleUserChange(event) {
         this.setState({user: event.target.value});
@@ -27,31 +64,37 @@ export default class Project extends Component {
     }
     render() {
         return (
-                <div className="project">
-                <h1>{this.state.user + "\\" + this.state.project}</h1>   
-                <Avatar />
-                <input
-                    type="text"
-                    name="userInput"
-                    defaultValue={this.state.user} 
-                    onChange={this.handleUserChange}
-                    />
-                <input
-                    type="text"
-                    name="projectInput"
-                    defaultValue={this.state.project}
-                    onChange={this.handleProjectChange}
-                    />
-                <ProjectReport user={this.state.user} project={this.state.project} />
-                <Issues user={this.state.user} project={this.state.project} />
-                </div>
-               );
+                <ul className="projectSelection">
+                    <li>
+                        <Avatar />
+                    </li>
+                    <li>
+                        <input
+                            type="text"
+                            name="userInput"
+                            defaultValue={this.state.user} 
+                            onChange={this.handleUserChange}
+                        />
+                    </li>
+                    <li>
+                        <input
+                            type="text"
+                            name="projectInput"
+                            defaultValue={this.state.project}
+                            onChange={this.handleProjectChange}
+                        />
+                    </li>
+                    <li>
+                        <button onClick={this.updateSelection} value={this.state.user + "\\" + this.state.project}>Retrieve</button>
+                    </li>
+                </ul>
+                );
     }
 }
-Project.PropTypes = {
+
+ProjectSelection.PropTypes = {
     user: "danlangridge",
-    project: "project-dashboard",
-    update: true
+    project: "project-dashboard"
 }
 
 class ProjectReport extends Component {

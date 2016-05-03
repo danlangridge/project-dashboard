@@ -8,12 +8,8 @@ import { HTTP } from 'meteor/http';
 export default class Avatar extends Component {
 	render() {
 		return (
-			<div className="Avatar">
-			<img
-				src="https://avatars1.githubusercontent.com/u/1416807"
-				height="50px"
-				width="50px" 
-				/>
+			<div className="avatar">
+			<img src="https://avatars1.githubusercontent.com/u/1416807" />
 			</div>
 		);
 	}

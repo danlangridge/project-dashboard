@@ -1,8 +1,8 @@
 /* CSS declarations go here */
 body {
     font-family: Helvetica;
-    color: #6b566b;
-    background-color: rgb(34, 34, 34);;
+    color: #FFFDED;
+    background-color: #473B40;
 }
 
 h1 {
@@ -11,14 +11,16 @@ h1 {
 }
 div.projectReport {
     border-style: none;
-    border-color: : #f5f2f2;
+    border-color: : #473B40;
 }
 
 .additionBar {
     fill: #D9E9D6;
     fill-opacity: 0.2;
     stroke-width: 2;
+    stroke-height: 2;
     stroke: #AEE4A7;
+    rx: 4;
 }
 
 .subtractionBar {
@@ -27,21 +29,33 @@ div.projectReport {
     stroke: #FF7272;
 }
 
-div.Avatar {
+.avatar {
+     display: inline;
+}
+
+.avatar img {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+}
+
+input {
+    background-color: #473B40;
+    border: 2px solid #FFFDED;
 
 }
 
-div.Avatar img {
-    height: 100;
-    width: 100;
+.projectSelection li {
+    display: inline;
 }
 
-.panel-heading {
-    background-color: rgb(34, 34, 34);
+.projectSelection button {
+    background-color: #473B40;
+    border-color: #FFFDED;
+    border: 2px solid #FFFDED;
 
 }
 
-.panel {
-    background-color: rgb(34, 34, 34);
-
+.projectInformation {
+    display: inline;
 }
