@@ -16,7 +16,6 @@ export default class Project extends Component {
     }
     getProjectSelection(event) {
         var projectInfo = event.target.value.split('\\', 2);
-        alert("hello" + projectInfo[0] + projectInfo[1]);
         this.setState({user: projectInfo[0], project: projectInfo[1]});
     }
     render() {
