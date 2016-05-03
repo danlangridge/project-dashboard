@@ -1,6 +1,7 @@
 
-$primary-color: #363020;
-$secondary-color: #5E5B52;
+$primary-color: #262320;
+$secondary-color: #332E2E;
+$accent-color: #332E2E;
 $primary-text-color: #FFFDED;
 $chart-positive-color: #D9E9D6; 
 $chart-positive-border-color: #AEE4A7;
@@ -9,6 +10,7 @@ body {
     font-family: Helvetica;
     color: $primary-text-color;
     background-color: $primary-color;
+    background-image: url("/res/noise.png");
 }
 
 h1 {
@@ -68,8 +70,8 @@ input {
     left: 0px;
     right: 0px;
     border-style: solid;
-    border-color: $primary-text-color;
-    border-top: 0px;
+    border-color: $accent-color;
+    border-top-width: 3px;
     border-left: 0px;
     border-right: 0px;
     border-bottom-width: 3px;
@@ -77,6 +79,6 @@ input {
 
 .timeLeftBar {
     background-color: #000000;
-    height: 60px;
+    height: 54px;
     width: 40px;
 }
