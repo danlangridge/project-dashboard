@@ -129,7 +129,7 @@ class ProjectReport extends Component {
         return ( 
                 <div className="projectReport">
                 <h3>Weekly Commit History</h3>
-                <Chart height="300" width="400" data={this.state.result["owner"]} />
+                <Chart height="300" width="200" data={this.state.result["owner"]} />
                 </div>
                );
     }
@@ -163,7 +163,7 @@ class Issues extends Component {
         console.log(this.state.result);
         var issueList = _.map(this.state.result, function(issue, i) {
             return (
-                <div className="Issue" key={i}>
+                <div className="issue" key={i}>
                 <h4>{issue["title"]}</h4>
                 <p>{issue["body"]}</p>
                 </div>

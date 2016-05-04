@@ -10,8 +10,10 @@ export default class App extends Component {
         return (
                 <div className="container">
                 <NagBar />
+                <div className="content">
                 <Project />
                 <Task />
+                </div>
                 </div>
                );
     }
