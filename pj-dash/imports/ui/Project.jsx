@@ -21,7 +21,6 @@ export default class Project extends Component {
     render() {
         return (
                 <div className="project">
-                <h1>{this.state.user + "\\" + this.state.project}</h1>
                 <ProjectSelection user={this.state.user} project={this.state.project} updateSelection={this.getProjectSelection}/>
                 <ul className="projectInformation">
                 <li>
