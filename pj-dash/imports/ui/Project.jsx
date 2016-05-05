@@ -22,14 +22,10 @@ export default class Project extends Component {
         return (
                 <div className="project">
                 <ProjectSelection user={this.state.user} project={this.state.project} updateSelection={this.getProjectSelection}/>
-                <ul className="projectInformation">
-                <li>
+                <div className="projectInformation">
                 <ProjectReport user={this.state.user} project={this.state.project} />
-                </li>
-                <li>
                 <Issues user={this.state.user} project={this.state.project} />
-                </li>
-                </ul>
+                </div>
                 </div>
                );
     }
@@ -155,11 +151,16 @@ class Issues extends Component {
         Meteor.call('getGithubData', this.props.user, this.props.project, '/issues', (error, results) => {
             if (typeof results !== "undefined") {
                 this.setState({result: JSON.parse(results)});
-            }
+            } 
         });
     }
     render() {
         console.log(this.state.result);
+        var issueList;
+
+        if (this.state.result.length <= 0) {
+            issueList = <h4>No Issues currently assigned</h4>;
+        } else {
         var issueList = _.map(this.state.result, function(issue, i) {
             return (
                 <div className="issue" key={i}>
@@ -168,6 +169,7 @@ class Issues extends Component {
                 </div>
                 );
         });
+    }
         return (
             <div className="issues">
             <h3>Issues</h3>

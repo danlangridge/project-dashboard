@@ -11,8 +11,13 @@ export default class App extends Component {
                 <div className="container">
                 <div className="content">
                 <Project />
+                <NagBar />
+                </div>
+                {/*
+                <div className="sideBar">
                 <Task />
                 </div>
+            	*/}
                 </div>
                );
     }

@@ -44,7 +44,7 @@ class TaskCreator extends Component {
 
 class TaskList extends Component {
 	taskStateChange(event) {
-		
+
 
 	}
 
@@ -57,16 +57,11 @@ class TaskList extends Component {
 		var taskList = tasks.map((task, key) => {
 			return (
 				<div className="task" key={key}>
-				<ul>
-				<li>
 				<p>
 				{task.text}
 				</p>
-				</li>
-				<li>
 				<button onClick={this.taskStateChange}>start</button>
-				</li>
-				</ul>
+				<button onClick={this.taskStateChange}>remove</button>
 				</div>
 				)	
 		})
