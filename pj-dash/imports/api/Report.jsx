@@ -29,7 +29,7 @@ Meteor.methods({
             return undefined;
         }
 
-        console.log(result.headers);
+        //console.log(result.headers);
         return result.content; 
     }
 });

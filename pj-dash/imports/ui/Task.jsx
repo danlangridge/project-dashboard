@@ -9,8 +9,16 @@ export default class Task extends Component {
 	render() {
 		return (
 			<div className="taskContainer">
+			<ul>
+			<li>
 			<TaskCreator />
+			</li>
+			<li>
+			<div className="dropdown">
 			<TaskList />
+			</div>
+			</li>
+			</ul>
 			</div>
 			);
 	}
@@ -44,8 +52,6 @@ class TaskCreator extends Component {
 
 class TaskList extends Component {
 	taskStateChange(event) {
-
-
 	}
 
 	render() {
@@ -60,16 +66,28 @@ class TaskList extends Component {
 				<p>
 				{task.text}
 				</p>
-				<button onClick={this.taskStateChange}>start</button>
-				<button onClick={this.taskStateChange}>remove</button>
 				</div>
-				)	
+				)
 		})
 	
 
 		return (
 			<div className="taskList">
-			{taskList}
+				<div className="dropdownContent">
+					{taskList}
+				</div>
+				<TaskOptions taskStateChange={this.taskStateChange.bind(this)} />
+			</div>
+			);
+	}
+}
+
+class TaskOptions extends Component {
+	render() {
+		return (
+			<div className="taskOptions">
+				<button onClick={this.taskStateChange}>start</button>
+				<button onClick={this.taskStateChange}>remove</button>
 			</div>
 			);
 	}

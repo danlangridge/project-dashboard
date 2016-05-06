@@ -9,16 +9,14 @@ export default class App extends Component {
     render() {
         return (
                 <div className="container">
+                <div className="topbar">
+                <Task />
+                </div>
                 <div className="content">
                 <Project />
                 <NagBar />
                 </div>
-                {/*
-                <div className="sideBar">
-                <Task />
-                </div>
-            	*/}
-                </div>
+            	</div>
                );
     }
 }

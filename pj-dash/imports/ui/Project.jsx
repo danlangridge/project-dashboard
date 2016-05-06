@@ -123,7 +123,7 @@ class ProjectReport extends Component {
     render() {
         return ( 
                 <div className="projectReport">
-                <h3>Weekly Commit History</h3>
+                <h3>Commit History</h3>
                 <Chart height="300" width="200" data={this.state.result["owner"]} />
                 </div>
                );

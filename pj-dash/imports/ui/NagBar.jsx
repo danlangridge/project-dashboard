@@ -35,6 +35,8 @@ class CircularDayTimer extends Component {
 		return (
 			<div className="circularDayTimer">
 			<div className="dayOuter">
+				<div className="burst-12">
+				</div>
 			</div>
 			</div>
 			);
