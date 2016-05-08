@@ -9,7 +9,7 @@ export default class Chart extends Component {
                 <svg height={this.props.height} width={this.props.width} >
 
                     <DataSeries data={this.props.data} height={this.props.height} width={this.props.width}  />
-                </svg> 
+                </svg>
                 </div>
                ); 
     }
