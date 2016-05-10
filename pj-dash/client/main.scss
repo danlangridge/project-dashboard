@@ -39,11 +39,19 @@ ul {
 }
 
 .topbar {
-    position: absolute;
-    height: 40px;
+    position: fixed;
+    height: 60px;
     width: 100%;
-    background-color: black;
+    background-color: #C07A4D;
     float: right;
+    margin-bottom: 10px;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b0d4e3+0,88bacf+100;Grey+3D+%233 */
+background: rgb(176,212,227); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(176,212,227,1) 0%, rgba(136,186,207,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(176,212,227,1) 0%,rgba(136,186,207,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(176,212,227,1) 0%,rgba(136,186,207,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d4e3', endColorstr='#88bacf',GradientType=0 ); /* IE6-9 */
 }
 
 .dropdownContent {
@@ -70,6 +78,7 @@ ul {
 
 .taskContainer input {
     height: 100%;
+    color: black;
 }
 
 .taskContainer form {
@@ -80,14 +89,12 @@ ul {
     display: inline;
     height: 100%;
     width: 200px;
-    background-color: black;
-    border: 2px solid;
     display: inline-block;
     float:right;
 }
 
 .taskOptions {
-    width: 200px;
+    width: 400px;
     height: 100%;
     display: inline-block;
     float: right;
@@ -97,6 +104,11 @@ ul {
     width: 100px;
     height: 100%;
     display: inline-block;
+    border-style: none;
+    border-radius: 0;
+    background-color: inherit;
+    color: black;
+
 }
 
 .task button {
@@ -105,6 +117,12 @@ ul {
     border-style: none;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+.timer {
+    display:inline-block;
+    color: black;
+
 }
 
 .nagBar {
@@ -132,15 +150,6 @@ ul {
     margin-top: 0px;
 }
 
-.additionBar {
-    fill: $chart-positive-color;
-    fill-opacity: 0.2;
-    stroke-width: 2;
-    stroke-height: 2;
-    stroke: $chart-positive-border-color;
-    rx: 4;
-}
-
 .avatar {
      display: inline;
 }
@@ -152,7 +161,7 @@ ul {
 }
 
 input {
-    background-color: $primary-color;
+    background-color: transparent;
     width: 150px;
     border: none;
     border-bottom: 1px solid $primary-text-color;
@@ -163,10 +172,12 @@ input {
 .content {
     margin: 0 auto;
     width: 80%;
-    margin-top: 45px;
+    margin-top: 65px;
 }
 
 .project {
+    width:100%;
+    min-height: 450px;
 }
 
 .projectSelection li {
@@ -194,18 +205,29 @@ button {
 }
 
 .projectReport {
-    width: 210px;
+    width: 410px;
     margin: 0;
     padding: 0;
     float: left;
 }
 
 .chart {
-    width: 205px;
+    width: 405px;
     height: 310px;
     padding: 5px;
-    border-left: solid 1px $primary-text-color;
-    border-bottom: solid 1px $primary-text-color;
+}
+
+.additionBar {
+    fill: $chart-positive-color;
+    fill-opacity: 0.2;
+    stroke-width: 1;
+    stroke: $chart-positive-border-color;
+    rx: 4;
+}
+
+.axis {
+    stroke-width: 1;
+    fill: $primary-text-color;
 }
 
 .issues {
@@ -217,7 +239,7 @@ button {
     opacity: 0.6;
     margin-left: 10px;
     margin-top: 10px;
-    display:block;
+    display: block;
     width: 100px;
     height: 120px;
     background-color: black;
@@ -227,7 +249,7 @@ button {
 
 .circularDayTimer {
     position: fixed;
-    z-index: 1;
+    z-index: -1;
     top: 50%;
     left: 50%;
     margin-left: -200px;
@@ -253,8 +275,8 @@ button {
 }
 
 .daylight {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     position: relative;
     -webkit-animation: rocking 4.5s infinite;
    animation: rocking 50.5s infinite;

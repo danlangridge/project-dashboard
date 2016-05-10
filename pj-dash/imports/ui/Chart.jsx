@@ -29,27 +29,53 @@ class DataSeries extends Component {
             clearedHead = true;
             trimmedData.push(this.props.data[i]);
         }
+
+        var padding = 30;
+        var paddedHeight = this.props.height - padding;
+        var paddedWidth = this.props.width - padding;
+
         
         var yScale = d3.scale.linear()
             .domain([0, d3.max(trimmedData)])
-            .range([0, this.props.height]);
+            .range([0, paddedHeight]);
         
         var xScale = d3.scale.ordinal()
             .domain(d3.range(trimmedData.length))
-            .rangeRoundBands([0, this.props.width], 0);
+            .rangeRoundBands([padding, paddedWidth], 0);
 
         var height = this.props.height;
 
-        var axis = d3.svg.axis();
+        var xAxisElement = this.refs.xAxis;
 
-        var bars = _.map(this.props.data, function(point, i) {
+        var xAxis = d3.svg.axis()
+                    .orient("bottom")
+                    .scale(xScale);
+
+        d3.select(xAxisElement).call(xAxis);
+        
+        var yAxisElement = this.refs.yAxis;
+
+        var yAxis = d3.svg.axis()
+                    .orient("left")
+                    .scale(yScale);
+
+        d3.select(yAxisElement).call(yAxis);
+
+        var xTransform = 'translate(0, ' + (paddedHeight) + ')';
+
+        var yTransform = 'translate(' + (padding) + ',' + padding + ')';
+
+
+        var bars = _.map(trimmedData, function(point, i) {
             return (
-                <Bar height={yScale(point)} width={xScale.rangeBand()} offset={xScale(i)} availableHeight={height} key={i} />
+                <Bar height={yScale(point)} width={xScale.rangeBand()} offset={xScale(i)} availableHeight={paddedHeight} key={i} />
                 ); 
         });
         return (
-                <svg height={this.props.height} width={this.props.width} >
+                <svg height={this.props.height} width={this.props.width}>
                 <g>{bars}</g>
+                <g className="axis" ref="xAxis" transform={xTransform}></g> 
+                <g className="axis" ref="yAxis" transform={yTransform}></g>
                 </svg> 
                );
     }

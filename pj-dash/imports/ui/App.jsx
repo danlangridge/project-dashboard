@@ -13,7 +13,8 @@ export default class App extends Component {
                 <Task />
                 </div>
                 <div className="content">
-                <Project />
+                <Project user="danlangridge" project="project-dashboard"/>
+                <Project user="danlangridge" project="glitter-game"/>
                 <NagBar />
                 </div>
             	</div>

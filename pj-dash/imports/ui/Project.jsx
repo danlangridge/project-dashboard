@@ -9,8 +9,8 @@ export default class Project extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: "danlangridge",
-            project: "project-dashboard",
+            user: this.props.user,
+            project: this.props.project,
         };
         this.getProjectSelection = this.getProjectSelection.bind(this);
     }
@@ -39,8 +39,8 @@ class ProjectSelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: "danlangridge",
-            project: "project-dashboard",
+            user: this.props.user,
+            project: this.props.project,
         };
 
     this.handleUserChange = this.handleUserChange.bind(this);
@@ -124,7 +124,7 @@ class ProjectReport extends Component {
         return ( 
                 <div className="projectReport">
                 <h3>Commit History</h3>
-                <Chart height="300" width="200" data={this.state.result["owner"]} />
+                <Chart height="300" width="400" data={this.state.result["owner"]} />
                 </div>
                );
     }

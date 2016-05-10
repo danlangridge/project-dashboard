@@ -80,9 +80,20 @@ class TaskOptions extends Component {
 		return (
 			<div className="taskOptions">
 				<button onClick={this.taskStateChange}>start</button>
-				
+				<Timer />
 				<button onClick={this.taskStateChange}>remove</button>
 			</div>
 			);
 	}
+}
+
+class Timer extends Component {
+	render() {
+		return (
+			<div className="timer">
+				<time>00:00:00</time>
+			</div>		
+			);
+	}
+
 }
