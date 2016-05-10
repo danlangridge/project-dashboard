@@ -45,6 +45,10 @@ ul {
     background-color: #C07A4D;
     float: right;
     margin-bottom: 10px;
+    border-bottom-color: #B0D4E3;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    box-shadow: 0px 3px 3px #332E2E;
 
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b0d4e3+0,88bacf+100;Grey+3D+%233 */
 background: rgb(176,212,227); /* Old browsers */
@@ -53,17 +57,6 @@ background: -webkit-linear-gradient(top,  rgba(176,212,227,1) 0%,rgba(136,186,20
 background: linear-gradient(to bottom,  rgba(176,212,227,1) 0%,rgba(136,186,207,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d4e3', endColorstr='#88bacf',GradientType=0 ); /* IE6-9 */
 }
-
-.dropdownContent {
-    display: none;
-    width: 100%;
-    position: absolute;
-    background-color: red;
-}
-
-.taskList:hover .dropdownContent {
-    display: block;
-} 
 
 .taskContainer {
     width: 100%;
@@ -79,7 +72,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d4e3', end
 .taskContainer input {
     height: 100%;
     color: black;
+    border-style: none;
 }
+
+.taskContainer input:placeholder-shown {
+    height: 100%;
+    color: black;
+    border-style: none;
+}
+
 
 .taskContainer form {
     height: 100%;
@@ -90,8 +91,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d4e3', end
     height: 100%;
     width: 200px;
     display: inline-block;
-    float:right;
+    float: right;
+    color: black;
 }
+
+.taskList h4 {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding-top: 10%;
+    text-align: center;
+}
+
+.dropdownContent {
+    display: none;
+    width: 100%;
+    position: absolute;
+    background-color: white;
+}
+
+.taskList:hover .dropdownContent {
+    display: block;
+} 
 
 .taskOptions {
     width: 400px;
@@ -211,7 +232,7 @@ button {
     float: left;
 }
 
-.chart {
+.project .chart {
     width: 405px;
     height: 310px;
     padding: 5px;

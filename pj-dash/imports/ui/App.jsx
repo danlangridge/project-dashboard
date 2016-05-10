@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import Project from './Project.jsx';
-import Task from './Task.jsx';
+import Task, { TaskAnalytics } from './Task.jsx';
 import NagBar from './NagBar.jsx';
 
 export default class App extends Component {
@@ -13,6 +13,7 @@ export default class App extends Component {
                 <Task />
                 </div>
                 <div className="content">
+                <TaskAnalytics />
                 <Project user="danlangridge" project="project-dashboard"/>
                 <Project user="danlangridge" project="glitter-game"/>
                 <NagBar />
