@@ -19,8 +19,6 @@ Meteor.methods({
 			text,
 			createdAt: new Date(),
 		});
-
-
 	},
 
 });
