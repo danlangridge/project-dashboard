@@ -5,6 +5,7 @@ import  Chart from './Chart.jsx';
 
 import { Tasks } from './../../imports/api/Tasks.jsx'
 import { Days } from './../../imports/api/Days.jsx'
+
 import { Meteor } from 'meteor/meteor';
 
 export default class Task extends Component {
@@ -44,8 +45,6 @@ class TaskCreator extends Component {
 }
 
 class TaskSelection extends Component {
-		taskStateChange(event) {
-	}
 	render() {
 
 		var tasks = Tasks.find().fetch();
@@ -68,7 +67,7 @@ class TaskSelection extends Component {
 
 		return (
 			<div className="taskSelection">
-			<TaskOptions taskStateChange={this.taskStateChange.bind(this)} />
+			<Timer />
 			<div className="taskList">
 
 				<h4>tasks</h4>
@@ -76,18 +75,6 @@ class TaskSelection extends Component {
 					{taskList}
 				</div>
 			</div>
-			</div>
-			);
-	}
-}
-
-class TaskOptions extends Component {
-	render() {
-		return (
-			<div className="taskOptions">
-				<button onClick={this.taskStateChange}>start</button>
-				<Timer />
-				<button onClick={this.taskStateChange}>stop</button>
 			</div>
 			);
 	}
@@ -105,6 +92,32 @@ export class TaskAnalytics extends Component {
 }
 
 class Timer extends Component {
+	constructor(props) {
+		super(props);
+		this.timerStateChange = this.timerStateChange.bind(this);
+		this.state = {
+			tick: false,
+			timerStart: 0,
+			timerEnd: 0
+		}	
+	}
+
+	timerStateChange(event) {
+		console.log("button change");
+		if (this.state.tick) {
+		    var endTime = new Date();
+		    var button = ReactDOM.findDOMNode(this.refs.timerButton);
+		    button.html(start);
+
+		    Meteor.call('days.insert', endTime, (this.state.endTime - this.state.startTime)/1000);
+		    this.state({tick: !this.state.tick, timerEnd: endTime })
+		} else {
+			this.refs.timerButton.html(stop);
+			ReactDOM.findDOMNode(this.refs.timerButton).html(stop);
+		    var startTime = new Date();
+		    this.state({tick: !this.state.tick, timerStart: startTime})
+		}
+	}
 	setTime() {
 
     var currentdate = new Date();
@@ -144,6 +157,7 @@ class Timer extends Component {
 	render() {
 		return (
 			<div className="timer">
+				<button onClick={this.timerStateChange} ref="timerButton" >start</button>
         		<span className="time">{this.state.hours}:{this.state.minutes}:{this.state.seconds}</span>
 			</div>		
 			);
