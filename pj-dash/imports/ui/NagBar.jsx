@@ -34,14 +34,45 @@ class CircularDayTimer extends Component {
 	render() {
 		var currentHour = new Date().getHours();
 		var image = "/res/sun.png";
-		
+
 		if (currentHour > 18 || currentHour < 6) {
 			var image = "/res/moon.png";
 		}
+
+		convertToRads = Math.PI/180;
+
+		imgWidth = 170;
+		imgHeight = 160;
+
+		containerWidth = 400;
+		containerHeight = 300;
+
+		heightNorm = imgHeight/2/containerHeight*100;
+		widthNorm = imgWidth/2/containerWidth*100;
+
+		var left = Math.floor(Math.cos((currentHour*15 + 90)*convertToRads)*50 + 50) - widthNorm + "%";
+		var top = Math.floor(Math.sin((currentHour*15 + 90)*convertToRads)*50 + 50) - heightNorm + "%";
+
+		var style = "top:" + top + ";left:" + left + ";";
+
 		return (
 			<div className="circularDayTimer">
-			<div className="dayOuter">
-				<img src={image} className="daylight" />
+			<div className="dayOuter"
+			style={
+				{
+				width: containerWidth + 'px',
+				height: containerHeight + 'px'
+				}
+			}>
+				<img src={image}
+				style={
+					{
+						top: top,
+						left: left,
+						width: imgWidth + 'px',
+						height: imgHeight + 'px'
+					}
+				} className="daylight" />
 			</div>
 			</div>
 			);

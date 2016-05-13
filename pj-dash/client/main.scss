@@ -294,6 +294,7 @@ button {
 .dayOuter {
     opacity: 0.2;
     display: block;
+    position: absolute;
     width: 400px;
     height: 300px;
     background-image: url("/res/noise.png");
@@ -310,8 +311,8 @@ button {
 }
 
 .daylight {
-    width: 100px;
-    height: 100px;
+    width: 170px;
+    height: 160px;
     position: relative;
     -webkit-animation: rocking 4.5s infinite;
    animation: rocking 50.5s infinite;

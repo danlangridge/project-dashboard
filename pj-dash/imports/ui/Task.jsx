@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import  Chart from './Chart.jsx';
 
 import { Tasks } from './../../imports/api/Tasks.jsx'
+import { Days } from './../../imports/api/Days.jsx'
 import { Meteor } from 'meteor/meteor';
 
 export default class Task extends Component {
