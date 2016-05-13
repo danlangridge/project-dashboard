@@ -72,6 +72,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d4e3', end
     display: inline-block;
 }
 
+.taskSelection {
+
+}
+
 .taskContainer input {
     height: 100%;
     color: black;
@@ -140,6 +144,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d4e3', end
     border-style: none;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+.taskId {
+    display: none;
 }
 
 .timer {

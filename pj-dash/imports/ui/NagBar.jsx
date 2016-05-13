@@ -32,10 +32,16 @@ class LinearDayTimer extends Component {
 
 class CircularDayTimer extends Component {
 	render() {
+		var currentHour = new Date().getHours();
+		var image = "/res/sun.png";
+		
+		if (currentHour > 18 || currentHour < 6) {
+			var image = "/res/moon.png";
+		}
 		return (
 			<div className="circularDayTimer">
 			<div className="dayOuter">
-				<img src="/res/sun.png" className="daylight" />
+				<img src={image} className="daylight" />
 			</div>
 			</div>
 			);

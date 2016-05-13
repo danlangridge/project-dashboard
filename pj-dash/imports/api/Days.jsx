@@ -6,7 +6,6 @@ export const Days = new Mongo.Collection('days');
 
 var day = 86400000;
 
-
 if (Meteor.isServer) {
 	Meteor.publish('days', function tasksPublication() {
 		return Tasks.find()

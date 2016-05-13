@@ -7,14 +7,11 @@ import { Tasks } from './../../imports/api/Tasks.jsx'
 import { Meteor } from 'meteor/meteor';
 
 export default class Task extends Component {
-	taskStateChange(event) {
-	}
 	render() {
 		return (
 			<div className="taskContainer">
 			<TaskCreator />
-			<TaskList />
-			<TaskOptions taskStateChange={this.taskStateChange.bind(this)} />
+			<TaskSelection />
 			</div>
 			);
 	}
@@ -45,7 +42,9 @@ class TaskCreator extends Component {
 	}
 }
 
-class TaskList extends Component {
+class TaskSelection extends Component {
+		taskStateChange(event) {
+	}
 	render() {
 
 		var tasks = Tasks.find().fetch();
@@ -58,17 +57,24 @@ class TaskList extends Component {
 				<p>
 				{task.text}
 				</p>
+				<div className="taskId">
+				{task._id}
+				</div>
 				</div>
 				)
 		})
 	
 
 		return (
+			<div className="taskSelection">
+			<TaskOptions taskStateChange={this.taskStateChange.bind(this)} />
 			<div className="taskList">
+
 				<h4>tasks</h4>
 				<div className="dropdownContent">
 					{taskList}
 				</div>
+			</div>
 			</div>
 			);
 	}
