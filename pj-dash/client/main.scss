@@ -313,9 +313,17 @@ button {
 .daylight {
     width: 170px;
     height: 160px;
-    position: relative;
+    position: absolute;
     -webkit-animation: rocking 4.5s infinite;
    animation: rocking 50.5s infinite;
+}
+
+.aura {
+    width: 170px;
+    height: 160px;
+    position: absolute;
+    z-index: -2;
+    display: none;
 }
 
 #egg {

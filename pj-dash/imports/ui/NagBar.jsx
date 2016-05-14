@@ -73,6 +73,15 @@ class CircularDayTimer extends Component {
 						height: imgHeight + 'px'
 					}
 				} className="daylight" />
+				<img src="./res/aura.png"
+				style={
+					{
+						top: top,
+						left: left,
+						width: imgWidth + 'px',
+						height: imgHeight + 'px'
+					}
+				} className="aura" />
 			</div>
 			</div>
 			);
