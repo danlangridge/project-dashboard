@@ -8,7 +8,7 @@ var day = 86400000;
 
 if (Meteor.isServer) {
 	Meteor.publish('days', function tasksPublication() {
-		return Tasks.find()
+		return Days.find()
 	});
 }
 
@@ -16,13 +16,14 @@ Meteor.methods({
 
 	'days.insert'(taskId, seconds) {
 
-		var docId = ObjectId(Math.floor(new Date().now()/day).toString(16));
+		var docId = Mongo.ObjectId(Math.floor(new Date().now()/day).toString(16));
 
 		Days.insert(
 		{
 			_id: docId,
 			date: new Date(),
-			tasks: [
+			tasks: 
+			[
 				{
 					_id: taskId,
 					seconds:  seconds,

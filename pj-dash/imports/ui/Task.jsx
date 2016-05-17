@@ -104,20 +104,19 @@ class Timer extends Component {
 
 	timerStateChange(event) {
 		console.log("button change");
+
 		if (this.state.tick) {
 		    var endTime = new Date();
-		    var button = ReactDOM.findDOMNode(this.refs.timerButton);
-		    button.html(start);
-
+			ReactDOM.findDOMNode(this.refs.timerButton).textContent = 'start';
 		    Meteor.call('days.insert', endTime, (this.state.endTime - this.state.startTime)/1000);
-		    this.state({tick: !this.state.tick, timerEnd: endTime })
+		    this.setState({tick: !this.state.tick, timerEnd: endTime })
 		} else {
-			this.refs.timerButton.html(stop);
-			ReactDOM.findDOMNode(this.refs.timerButton).html(stop);
+			ReactDOM.findDOMNode(this.refs.timerButton).textContent = 'stop';
 		    var startTime = new Date();
-		    this.state({tick: !this.state.tick, timerStart: startTime})
+		    this.setState({tick: !this.state.tick, timerStart: startTime})
 		}
 	}
+
 	setTime() {
 
     var currentdate = new Date();
