@@ -63,7 +63,6 @@ class TaskSelection extends Component {
 				</div>
 				)
 		})
-	
 
 		return (
 			<div className="taskSelection">
@@ -82,7 +81,12 @@ class TaskSelection extends Component {
 
 export class TaskAnalytics extends Component {
 	render() {
-		var data = [0,1,6,3,4,3,6,7,2,3,5,6,7,3,4,3,6,4,2,6,7,8,6];
+		var days = Days.find().fetch();
+		var data = [];
+		 days.forEach( function (day) {
+		 	data.push(day.tasks[0].seconds);
+		 });
+		 console.log(data);
 		return (
 			<div className="taskAnalytics">
 			    <Chart height="400" width="800" data={data} />
@@ -95,55 +99,60 @@ class Timer extends Component {
 	constructor(props) {
 		super(props);
 		this.timerStateChange = this.timerStateChange.bind(this);
+		this.timerClear = this.timerClear.bind(this);
+		this.setTime = this.setTime.bind(this);
 		this.state = {
 			tick: false,
 			timerStart: 0,
-			timerEnd: 0
-		}	
+			timerEnd: 0,
+			value: 0,
+			hours: 0,
+        	minutes: 0,
+        	seconds: 0
+		};
+	}
+
+	timerClear(event) {
+
 	}
 
 	timerStateChange(event) {
 		console.log("button change");
 
 		if (this.state.tick) {
-		    var endTime = new Date();
+		    var endTime = new Date().getTime();
 			ReactDOM.findDOMNode(this.refs.timerButton).textContent = 'start';
-		    Meteor.call('days.insert', endTime, (this.state.endTime - this.state.startTime)/1000);
-		    this.setState({tick: !this.state.tick, timerEnd: endTime })
+		    Meteor.call('days.insert', endTime, Math.floor((endTime - this.state.timerStart)/1000));
+		    console.log(Math.floor((endTime - this.state.timerStart)/1000));
+		    this.setState({tick: !this.state.tick, timerEnd: endTime });
 		} else {
 			ReactDOM.findDOMNode(this.refs.timerButton).textContent = 'stop';
-		    var startTime = new Date();
-		    this.setState({tick: !this.state.tick, timerStart: startTime})
+		    var startTime = new Date().getTime();
+		    this.setState({tick: !this.state.tick, timerStart: startTime});
 		}
 	}
 
 	setTime() {
+		if (this.state.tick) {
+			var value = this.state.value + 1;
+			var seconds = value % 60;
+			var minutes = Math.floor(value / 60);
+			var hours = Math.floor(value / (3600));
 
-    var currentdate = new Date();
-    var hours = currentdate.getUTCHours();    
+			this.setState({
+        		hours: hours,
+        		minutes: minutes,
+        		seconds: seconds,
+      			value: value
+      		});
+		} else {
+			if (this.state.value != 0) {
+				this.setState({value: 0});
+			}
+			
+		}
+		
 
-      // correct for number over 24, and negatives
-      if( hours >= 24 ){ hours -= 24; }
-      if( hours < 0   ){ hours += 12; }
-
-      // add leading zero, first convert hours to string
-      hours = hours + "";
-      if( hours.length == 1 ){ hours = "0" + hours; }
-
-      // minutes are the same on every time zone
-      var minutes = currentdate.getUTCMinutes();
-
-      // add leading zero, first convert hours to string
-      minutes = minutes + "";
-      if( minutes.length == 1 ){ minutes = "0" + minutes; }
-
-      seconds = currentdate.getUTCSeconds();
-
-      this.setState({
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds
-      });
   }
   componentWillMount() {
     this.setTime();
@@ -157,6 +166,7 @@ class Timer extends Component {
 		return (
 			<div className="timer">
 				<button onClick={this.timerStateChange} ref="timerButton" >start</button>
+				<button onClick={this.timerStateChange} >clear</button>
         		<span className="time">{this.state.hours}:{this.state.minutes}:{this.state.seconds}</span>
 			</div>		
 			);

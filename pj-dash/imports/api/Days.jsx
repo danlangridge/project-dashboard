@@ -15,10 +15,15 @@ if (Meteor.isServer) {
 Meteor.methods({
 
 	'days.insert'(taskId, seconds) {
+		var date = new Date();
+		var currentDay = Math.floor(date.getTime()/day).toString(16);
 
-		var docId = Mongo.ObjectId(Math.floor(new Date().now()/day).toString(16));
+		var pad = "000000000000000000000000";
+		var oHex = pad.substring(0, pad.length - currentDay.length) + currentDay;
 
-		Days.insert(
+		var docId = new Mongo.Collection.ObjectID(oHex);
+		Days.upsert(
+			docId,
 		{
 			_id: docId,
 			date: new Date(),

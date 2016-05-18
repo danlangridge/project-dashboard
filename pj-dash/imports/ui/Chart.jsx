@@ -76,7 +76,7 @@ class DataSeries extends Component {
                 <g>{bars}</g>
                 <g className="axis" ref="xAxis" transform={xTransform}></g> 
                 <g className="axis" ref="yAxis" transform={yTransform}></g>
-                </svg> 
+                </svg>
                );
     }
 
