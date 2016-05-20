@@ -166,7 +166,6 @@ class Timer extends Component {
 		return (
 			<div className="timer">
 				<button onClick={this.timerStateChange} ref="timerButton" >start</button>
-				<button onClick={this.timerStateChange} >clear</button>
         		<span className="time">{this.state.hours}:{this.state.minutes}:{this.state.seconds}</span>
 			</div>		
 			);

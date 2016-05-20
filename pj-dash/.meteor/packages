@@ -25,3 +25,7 @@ http
 flemay:less-autoprefixer
 firfi:meteor-react-bootstrap
 fourseven:scss
+aknudsen:trello-client
+accounts-ui
+accounts-github
+mrt:accounts-trello

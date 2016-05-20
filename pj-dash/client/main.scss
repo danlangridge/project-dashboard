@@ -3,7 +3,7 @@ $primary-color: #262320;
 $secondary-color: #332E2E;
 $accent-color: #332E2E;
 $primary-text-color: #FFFDED;
-$chart-positive-color: #D9E9D6; 
+$chart-positive-color: #487540; 
 $chart-positive-border-color: #AEE4A7;
 
 body {
@@ -242,7 +242,6 @@ button {
 
 .additionBar {
     fill: $chart-positive-color;
-    fill-opacity: 0.0;
     stroke-width: 3;
     stroke: $chart-positive-border-color;
     rx: 4;

@@ -10,6 +10,7 @@
     "react": "^15.0.1",
     "react-addons-pure-render-mixin": "^15.0.1",
     "react-bootstrap": "^0.29.3",
-    "react-dom": "^15.0.1"
+    "react-dom": "^15.0.1",
+    "trello": "^0.5.1"
   }
 }
