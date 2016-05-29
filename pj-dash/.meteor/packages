@@ -29,3 +29,4 @@ aknudsen:trello-client
 accounts-ui
 accounts-github
 mrt:accounts-trello
+dburles:mongo-collection-instances

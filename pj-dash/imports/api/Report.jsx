@@ -19,8 +19,8 @@ Meteor.methods({
             result = HTTP.call("GET", URL,
                 {
                     headers: {
-                        'User-Agent': 'Meteor/1.0',
-                        Authorization : personalAccessToken
+                        'User-Agent': 'Meteor/1.0'
+                        
                     }
                 } 
                 );
